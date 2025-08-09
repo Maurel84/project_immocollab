@@ -59,8 +59,6 @@ export const AdminLoginForm: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="admin@immoplatform.ci"
-
               placeholder="admin@gestion360immo.com"
             />
 
