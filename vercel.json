@@ -11,13 +11,8 @@
     }
   ],
   "env": {
-<<<<<<< HEAD
-    "VITE_SUPABASE_URL": "@supabase_url",
-    "VITE_SUPABASE_ANON_KEY": "@supabase_anon_key"
-=======
     "VITE_SUPABASE_URL": "https://rnhcieggembunzmknzit.supabase.co",
     "VITE_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJuaGNpZWdnZW1idW56bWtueml0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI5NDUyMjAsImV4cCI6MjA2ODUyMTIyMH0.cqAesIVhwZJvlAGQLAJnB2osAGApRmrHpytUbQnCSW0"
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   },
   "headers": [
     {
