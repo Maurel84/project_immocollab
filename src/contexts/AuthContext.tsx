@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const checkSession = async () => {
       try {
-<<<<<<< HEAD
+
         // FORCE DEMO MODE - No database operations
         console.log('Application en mode démonstration complet');
         
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
       } catch (error) {
         console.warn('Session check failed:', error);
-=======
+
         if (!supabase) {
           setIsLoading(false);
           return;
@@ -100,14 +100,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
           console.warn('Supabase connection failed, continuing in demo mode');
         }
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
       } finally {
         setIsLoading(false);
       }
     };
 
     checkSession();
-<<<<<<< HEAD
+
   }, []);
 
   // Comptes de démonstration pour les agences
@@ -217,7 +217,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       } else {
         throw new Error('Email ou mot de passe incorrect');
       }
-=======
+
 
     if (supabase) {
       try {
@@ -277,7 +277,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
       
       setUser(userProfile);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     } catch (error) {
       throw error;
     } finally {
@@ -286,7 +286,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const loginAdmin = async (email: string, password: string) => {
-<<<<<<< HEAD
+
     // Comptes admin de démonstration - fonctionnement sans Supabase
     const demoAdminAccounts = [
       {
@@ -333,7 +333,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setAdmin(adminUser);
       localStorage.setItem('admin', JSON.stringify(adminUser));
-=======
+
     if (!supabase) {
       throw new Error('Supabase non configuré. Veuillez configurer les variables d\'environnement.');
     }
@@ -370,7 +370,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
       
       setAdmin(adminUser);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     } catch (error) {
       throw error;
     } finally {
@@ -379,7 +379,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = () => {
-<<<<<<< HEAD
+
     setUser(null);
     setAdmin(null);
     localStorage.removeItem('user');
@@ -389,13 +389,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (supabase) {
       supabase.auth.signOut().catch(console.warn);
     }
-=======
+
     if (supabase) {
       supabase.auth.signOut();
     }
     setUser(null);
     setAdmin(null);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   };
 
   const value = {

@@ -123,23 +123,19 @@ ANNEXES :
     agencyName: string;
     agencyAddress: string;
     agencyPhone: string;
-<<<<<<< HEAD
+
     agencyEmail: string;
     agencyCommercialRegister: string;
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     tenantName: string;
     tenantAddress: string;
     tenantPhone: string;
     tenantProfession: string;
-<<<<<<< HEAD
+
     tenantNationality: string;
     tenantIdNumber: string;
     ownerName: string;
     ownerAddress: string;
     ownerPhone: string;
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     propertyAddress: string;
     propertyDescription: string;
     monthlyRent: number;
@@ -150,7 +146,7 @@ ANNEXES :
     duration: number; // en mois
   }): string {
     return `
-<<<<<<< HEAD
+
 CONTRAT DE BAIL À USAGE PROFESSIONNEL
 (Conforme aux articles 101 à 134 du Traité OHADA relatif au Droit Commercial Général)
 (Ratifié par la République de Côte d'Ivoire le 29 septembre 1995)
@@ -423,7 +419,7 @@ Signature et cachet :              Signature :
 
 _____________________             _____________________
 
-<<<<<<< HEAD
+
 ANNEXES OBLIGATOIRES (Article 124 OHADA) :
 - État des lieux d'entrée détaillé
 - Copie certifiée conforme des pièces d'identité du preneur
@@ -439,7 +435,7 @@ MENTIONS LÉGALES OBLIGATOIRES :
 - Droit de préemption du locataire en cas de vente (Article 116 OHADA)
 - Procédure de révision des loyers selon l'indice INS
 - Recours possible devant la Commission de Conciliation des Baux
-=======
+
 ANNEXES OBLIGATOIRES :
 - État des lieux d'entrée détaillé
 - Copie des pièces d'identité du locataire
@@ -447,7 +443,6 @@ ANNEXES OBLIGATOIRES :
 - Attestation d'assurance habitation
 - Règlement de copropriété (le cas échéant)
 - Diagnostic de performance énergétique (si applicable)
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 `;
   }
 

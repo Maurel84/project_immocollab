@@ -36,7 +36,7 @@ export const ReportsHub: React.FC = () => {
   // Mock data for reports
   const reportData = {
     overview: {
-<<<<<<< HEAD
+
       totalRevenue: 0,
       totalCommissions: 0,
       activeContracts: 0,
@@ -54,7 +54,7 @@ export const ReportsHub: React.FC = () => {
         { month: 'Jan', revenue: 0, commissions: 0 },
         { month: 'Fév', revenue: 0, commissions: 0 },
         { month: 'Mar', revenue: 0, commissions: 0 }
-=======
+
       totalRevenue: 2450000,
       totalCommissions: 245000,
       activeContracts: 45,
@@ -72,7 +72,7 @@ export const ReportsHub: React.FC = () => {
         { month: 'Jan', revenue: 1800000, commissions: 180000 },
         { month: 'Fév', revenue: 2100000, commissions: 210000 },
         { month: 'Mar', revenue: 2450000, commissions: 245000 }
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
       ]
     }
   };
@@ -83,22 +83,22 @@ export const ReportsHub: React.FC = () => {
     datasets: [
       {
         label: 'Revenus (FCFA)',
-<<<<<<< HEAD
+
         data: [0, 0, 0, 0, 0, 0],
-=======
+
         data: [1800000, 2100000, 2450000, 2200000, 2600000, 2800000],
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
         backgroundColor: 'rgba(59, 130, 246, 0.5)',
         borderColor: 'rgba(59, 130, 246, 1)',
         borderWidth: 1,
       },
       {
         label: 'Commissions (FCFA)',
-<<<<<<< HEAD
+
         data: [0, 0, 0, 0, 0, 0],
-=======
+
         data: [180000, 210000, 245000, 220000, 260000, 280000],
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
         backgroundColor: 'rgba(16, 185, 129, 0.5)',
         borderColor: 'rgba(16, 185, 129, 1)',
         borderWidth: 1,
@@ -107,14 +107,14 @@ export const ReportsHub: React.FC = () => {
   };
 
   const propertyTypeData = {
-<<<<<<< HEAD
+
     labels: ['Aucune donnée'],
     datasets: [
       {
         data: [1],
         backgroundColor: [
           'rgba(156, 163, 175, 0.8)',
-=======
+
     labels: ['Villas', 'Appartements', 'Terrains', 'Immeubles', 'Autres'],
     datasets: [
       {
@@ -125,7 +125,7 @@ export const ReportsHub: React.FC = () => {
           'rgba(245, 158, 11, 0.8)',
           'rgba(239, 68, 68, 0.8)',
           'rgba(139, 92, 246, 0.8)',
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
         ],
         borderWidth: 2,
         borderColor: '#fff',
@@ -138,11 +138,11 @@ export const ReportsHub: React.FC = () => {
     datasets: [
       {
         label: 'Taux d\'occupation (%)',
-<<<<<<< HEAD
+
         data: [0, 0, 0, 0, 0, 0],
-=======
+
         data: [85, 87, 89, 88, 91, 87],
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
         borderColor: 'rgba(59, 130, 246, 1)',
         backgroundColor: 'rgba(59, 130, 246, 0.1)',
         tension: 0.4,

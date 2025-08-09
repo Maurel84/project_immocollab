@@ -20,11 +20,11 @@ export const FinancialStatements: React.FC<FinancialStatementsProps> = ({
   const [selectedPeriod, setSelectedPeriod] = useState('2024-03');
   const [showDetails, setShowDetails] = useState(false);
 
-<<<<<<< HEAD
+
   // Données financières vides pour la production
-=======
+
   // Mock financial data
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   const statement: FinancialStatement = {
     id: `statement_${entityId}_${selectedPeriod}`,
     entityId,
@@ -35,14 +35,14 @@ export const FinancialStatements: React.FC<FinancialStatementsProps> = ({
       endDate: new Date('2024-03-31')
     },
     summary: {
-<<<<<<< HEAD
+
       totalIncome: 0,
       totalExpenses: 0,
       balance: 0,
       pendingPayments: 0
     },
     transactions: [],
-=======
+
       totalIncome: entityType === 'owner' ? 450000 : 0,
       totalExpenses: entityType === 'owner' ? 45000 : 450000,
       balance: entityType === 'owner' ? 405000 : -450000,
@@ -69,7 +69,7 @@ export const FinancialStatements: React.FC<FinancialStatementsProps> = ({
         contractId: 'contract1'
       }
     ],
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     generatedAt: new Date()
   };
 

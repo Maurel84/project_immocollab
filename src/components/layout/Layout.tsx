@@ -21,13 +21,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Header onToggleSidebar={toggleSidebar} />
         
         <main className="flex-1 overflow-y-auto p-6 dashboard-background">
-<<<<<<< HEAD
+
           <div className="min-h-full">
             {children}
           </div>
-=======
+
           {children}
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
         </main>
       </div>
     </div>

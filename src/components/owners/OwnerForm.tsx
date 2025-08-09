@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
+
 import { Save, User, FileText, Heart } from 'lucide-react';
-=======
+
 import { Save, User, MapPin, Phone, FileText, Heart } from 'lucide-react';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Modal } from '../ui/Modal';
 import { Card } from '../ui/Card';
 import { OwnerFormData } from '../../types/owner';
-<<<<<<< HEAD
-=======
+
+
 import { ContractGenerator } from '../contracts/ContractGenerator';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 
 interface OwnerFormProps {
   isOpen: boolean;
@@ -27,12 +27,12 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
   onSubmit,
   initialData,
 }) => {
-<<<<<<< HEAD
+
   const [currentStep, setCurrentStep] = useState(1);
-=======
+
   const [showContractGenerator, setShowContractGenerator] = useState(false);
   const [createdOwner, setCreatedOwner] = useState<OwnerFormData | null>(null);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   const [formData, setFormData] = useState<OwnerFormData>({
     firstName: '',
     lastName: '',
@@ -46,12 +46,12 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
     spouseName: '',
     spousePhone: '',
     childrenCount: 0,
-<<<<<<< HEAD
+
     agencyId: '1',
     ...initialData,
   });
 
-=======
+
     agencyId: '',
     ...initialData,
   });
@@ -75,12 +75,12 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
     { value: 'veuf', label: 'Veuf/Veuve' },
   ];
 
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   const updateFormData = (updates: Partial<OwnerFormData>) => {
     setFormData(prev => ({ ...prev, ...updates }));
   };
 
-<<<<<<< HEAD
+
   const validateStep = (step: number): boolean => {
     switch (step) {
       case 1:
@@ -116,7 +116,7 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
       setCurrentStep(1);
     } else {
       alert('Veuillez compléter toutes les étapes avant d\'enregistrer.');
-=======
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -205,7 +205,7 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
       }
     } catch (error) {
       alert('Erreur lors de l\'enregistrement du propriétaire. Veuillez vérifier vos données et réessayer.');
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     }
   };
 
@@ -215,7 +215,7 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
     { id: 3, title: 'Situation familiale', icon: Heart },
   ];
 
-<<<<<<< HEAD
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" title="Ajouter un propriétaire">
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -458,7 +458,7 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
         </div>
       </form>
     </Modal>
-=======
+
   const isMarried = formData.maritalStatus === 'marie';
 
   return (
@@ -755,6 +755,6 @@ export const OwnerForm: React.FC<OwnerFormProps> = ({
         }}
       />
     </>
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   );
 };

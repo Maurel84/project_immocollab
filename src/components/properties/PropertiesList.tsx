@@ -4,10 +4,10 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
-<<<<<<< HEAD
+
 import { Modal } from '../ui/Modal';
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
+
 import { PropertyForm } from './PropertyForm';
 import { Property, PropertyFormData } from '../../types/property';
 import { useSupabaseData, useSupabaseCreate, useSupabaseDelete } from '../../hooks/useSupabaseData';
@@ -17,12 +17,12 @@ import { useAuth } from '../../contexts/AuthContext';
 export const PropertiesList: React.FC = () => {
   const { user } = useAuth();
   const [showForm, setShowForm] = useState(false);
-<<<<<<< HEAD
+
   const [showPropertyDetails, setShowPropertyDetails] = useState(false);
   const [editingProperty, setEditingProperty] = useState<Property | null>(null);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('all');
   const [filterStanding, setFilterStanding] = useState('all');
@@ -261,7 +261,7 @@ export const PropertiesList: React.FC = () => {
                 </div>
                 
                 <div className="flex space-x-1">
-<<<<<<< HEAD
+
                   <Button 
                     variant="ghost" 
                     size="sm"
@@ -280,12 +280,12 @@ export const PropertiesList: React.FC = () => {
                       setShowForm(true);
                     }}
                   >
-=======
+
                   <Button variant="ghost" size="sm">
                     <Eye className="h-4 w-4" />
                   </Button>
                   <Button variant="ghost" size="sm">
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
                     <Edit className="h-4 w-4" />
                   </Button>
                   <Button 
@@ -326,7 +326,7 @@ export const PropertiesList: React.FC = () => {
 
       <PropertyForm
         isOpen={showForm}
-<<<<<<< HEAD
+
         onClose={() => {
           setShowForm(false);
           setEditingProperty(null);
@@ -423,11 +423,11 @@ export const PropertiesList: React.FC = () => {
           </div>
         )}
       </Modal>
-=======
+
         onClose={() => setShowForm(false)}
         onSubmit={handleAddProperty}
       />
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     </div>
   );
 };

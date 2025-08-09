@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useState, useEffect } from 'react';
 import { Home, Building2, Users, UserCheck, FileText, TrendingUp, DollarSign, AlertTriangle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
@@ -8,7 +8,7 @@ import { Button } from '../ui/Button';
 import { BibleVerse } from './BibleVerse';
 import { useSupabaseData } from '../../hooks/useSupabaseData';
 import { dbService } from '../../lib/supabase';
-=======
+
 import React from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { StatsCard } from './StatsCard';
@@ -27,22 +27,19 @@ import {
   Bell,
   Plus
 } from 'lucide-react';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 
 export const Dashboard: React.FC = () => {
   const { user } = useAuth();
 
-<<<<<<< HEAD
   // Load data with hooks
-=======
+
   // Load real data from Supabase
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const { data: owners, refetch: refetchOwners } = useSupabaseData(dbService.getOwners);
   const { data: properties, refetch: refetchProperties } = useSupabaseData(dbService.getProperties);
   const { data: tenants, refetch: refetchTenants } = useSupabaseData(dbService.getTenants);
   const { data: contracts, refetch: refetchContracts } = useSupabaseData(dbService.getContracts);
 
-<<<<<<< HEAD
+
   // Calculate stats from real data
   const stats = {
     totalProperties: properties.length,
@@ -58,7 +55,7 @@ export const Dashboard: React.FC = () => {
       .reduce((sum, c) => sum + (c.commission_amount || 0), 0),
   };
 
-=======
+
   // Calculate stats
   const totalRevenue = contracts.reduce((sum, contract) => sum + (contract.commission_amount || 0), 0);
   const activeContracts = contracts.filter(contract => contract.status === 'active').length;
@@ -90,7 +87,6 @@ export const Dashboard: React.FC = () => {
     };
   }, [refetchOwners, refetchProperties, refetchTenants, refetchContracts]);
   
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('fr-FR', {
       style: 'currency',
@@ -99,27 +95,25 @@ export const Dashboard: React.FC = () => {
     }).format(amount);
   };
 
-<<<<<<< HEAD
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-=======
+
   // Afficher un message d'accueil pour les nouvelles agences
   const isNewAgency = owners.length === 0 && properties.length === 0 && tenants.length === 0 && contracts.length === 0;
   
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
             Tableau de bord
           </h1>
-<<<<<<< HEAD
+
           <p className="text-gray-600 mt-1">
-=======
+
           <p className="text-gray-600">
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
             Bienvenue, {user?.firstName} {user?.lastName}
           </p>
         </div>
@@ -128,7 +122,7 @@ export const Dashboard: React.FC = () => {
       {/* Bible Verse */}
       <BibleVerse />
 
-<<<<<<< HEAD
+
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatsCard
@@ -220,7 +214,7 @@ export const Dashboard: React.FC = () => {
                 <span className="ml-2 text-gray-500">vs mois précédent</span>
               </div>
             </div>
-=======
+
       {/* Message d'erreur de connexion */}
       {!isSupabaseConfigured() && (
         <Card className="bg-yellow-50 border-yellow-200">
@@ -335,12 +329,11 @@ export const Dashboard: React.FC = () => {
                 Aucune notification
               </p>
             )}
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
           </div>
         </Card>
       </div>
 
-<<<<<<< HEAD
+
       {/* Quick Actions */}
       <Card>
         <div className="p-6">
@@ -423,7 +416,7 @@ export const Dashboard: React.FC = () => {
           </div>
         </div>
       </Card>
-=======
+
       {/* Calendar and Tasks */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2 p-6">
@@ -478,7 +471,6 @@ export const Dashboard: React.FC = () => {
           </div>
         </Card>
       </div>
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     </div>
   );
 };

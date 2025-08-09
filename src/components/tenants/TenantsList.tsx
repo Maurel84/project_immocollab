@@ -5,37 +5,34 @@ import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
 import { TenantForm } from './TenantForm';
 import { Tenant, TenantFormData } from '../../types/tenant';
-<<<<<<< HEAD
+
 import { useSupabaseData, useSupabaseCreate, useSupabaseUpdate, useSupabaseDelete } from '../../hooks/useSupabaseData';
-=======
+
 import { useSupabaseData, useSupabaseCreate, useSupabaseDelete } from '../../hooks/useSupabaseData';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 import { dbService } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReceiptGenerator } from '../receipts/ReceiptGenerator';
 import { FinancialStatements } from '../financial/FinancialStatements';
 import { Modal } from '../ui/Modal';
-<<<<<<< HEAD
+
 import { ContractGenerator } from '../contracts/ContractGenerator';
 import { ActivityLogger } from '../../utils/activityLogger';
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 
 export const TenantsList: React.FC = () => {
   const { user } = useAuth();
   const [showForm, setShowForm] = useState(false);
-<<<<<<< HEAD
+
   const [showTenantDetails, setShowTenantDetails] = useState(false);
   const [editingTenant, setEditingTenant] = useState<Tenant | null>(null);
   const [showReceiptGenerator, setShowReceiptGenerator] = useState(false);
   const [showFinancialStatements, setShowFinancialStatements] = useState(false);
   const [selectedTenant, setSelectedTenant] = useState<Tenant | null>(null);
   const [showContractGenerator, setShowContractGenerator] = useState(false);
-=======
+
   const [showReceiptGenerator, setShowReceiptGenerator] = useState(false);
   const [showFinancialStatements, setShowFinancialStatements] = useState(false);
   const [selectedTenant, setSelectedTenant] = useState<Tenant | null>(null);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const [searchTerm, setSearchTerm] = useState('');
   const [filterMaritalStatus, setFilterMaritalStatus] = useState('all');
   const [filterPaymentStatus, setFilterPaymentStatus] = useState('all');
@@ -44,12 +41,11 @@ export const TenantsList: React.FC = () => {
   const { data: tenants, loading, error, refetch, setData } = useSupabaseData<Tenant>(
     dbService.getTenants
   );
-<<<<<<< HEAD
+
   
   // Charger les propriétés disponibles pour les contrats
   const { data: properties } = useSupabaseData(dbService.getProperties);
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 
   const { create: createTenant, loading: creating } = useSupabaseCreate(
     dbService.createTenant,
@@ -58,7 +54,7 @@ export const TenantsList: React.FC = () => {
       setShowForm(false);
       // Trigger dashboard refresh
       window.dispatchEvent(new Event('storage'));
-<<<<<<< HEAD
+
       
       // Log the creation
       if (user) {
@@ -104,21 +100,19 @@ export const TenantsList: React.FC = () => {
           'Informations du locataire mises à jour'
         );
       }
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     }
   );
 
   const { deleteItem: deleteTenant, loading: deleting } = useSupabaseDelete(
     dbService.deleteTenant,
-<<<<<<< HEAD
+
     () => {
       refetch();
       // Log will be added in handleDeleteTenant
     }
-=======
+
     () => refetch()
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   );
 
   const handleAddTenant = async (tenantData: TenantFormData) => {
@@ -130,7 +124,7 @@ export const TenantsList: React.FC = () => {
         throw new Error('Données obligatoires manquantes');
       }
       
-<<<<<<< HEAD
+
       if (editingTenant) {
         // Mode modification
         await updateTenant(editingTenant.id, {
@@ -173,7 +167,7 @@ export const TenantsList: React.FC = () => {
         });
         alert('Locataire créé avec succès !');
       }
-=======
+
       await createTenant({
         agency_id: user.agencyId,
         first_name: tenantData.firstName,
@@ -197,7 +191,6 @@ export const TenantsList: React.FC = () => {
       setShowForm(false);
       
       alert('Locataire créé avec succès !');
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     } catch (error) {
       console.error('Error creating tenant:', error);
       alert('Erreur lors de la création du locataire. Veuillez réessayer.');
@@ -205,7 +198,7 @@ export const TenantsList: React.FC = () => {
   };
 
   const handleDeleteTenant = async (tenantId: string) => {
-<<<<<<< HEAD
+
     const tenantToDelete = tenants.find(t => t.id === tenantId);
     if (confirm('Êtes-vous sûr de vouloir supprimer ce locataire ?')) {
       try {
@@ -222,10 +215,9 @@ export const TenantsList: React.FC = () => {
             'Locataire supprimé définitivement'
           );
         }
-=======
+
     if (confirm('Êtes-vous sûr de vouloir supprimer ce locataire ?')) {
       try {
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
         await deleteTenant(tenantId);
       } catch (error) {
         console.error('Error deleting tenant:', error);
@@ -233,7 +225,7 @@ export const TenantsList: React.FC = () => {
     }
   };
 
-<<<<<<< HEAD
+
   const handleViewTenant = (tenant: Tenant) => {
     setSelectedTenant(tenant);
     setShowTenantDetails(true);
@@ -310,8 +302,7 @@ export const TenantsList: React.FC = () => {
     }
   };
 
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   const getMaritalStatusLabel = (status: string) => {
     const labels = {
       celibataire: 'Célibataire',
@@ -469,7 +460,7 @@ export const TenantsList: React.FC = () => {
                 </div>
                 
                 <div className="flex space-x-1">
-<<<<<<< HEAD
+
                   <Button 
                     variant="ghost" 
                     size="sm"
@@ -518,7 +509,7 @@ export const TenantsList: React.FC = () => {
                       </Button>
                     </>
                   )}
-=======
+
                   <Button variant="ghost" size="sm">
                     <Eye className="h-4 w-4" />
                   </Button>
@@ -556,7 +547,6 @@ export const TenantsList: React.FC = () => {
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
                 </div>
               </div>
 
@@ -649,7 +639,7 @@ export const TenantsList: React.FC = () => {
 
       <TenantForm
         isOpen={showForm}
-<<<<<<< HEAD
+
         onClose={() => {
           setShowForm(false);
           setEditingTenant(null);
@@ -755,12 +745,11 @@ export const TenantsList: React.FC = () => {
         )}
       </Modal>
 
-=======
+
         onClose={() => setShowForm(false)}
         onSubmit={handleAddTenant}
       />
 
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       <ReceiptGenerator
         isOpen={showReceiptGenerator}
         onClose={() => {
@@ -787,7 +776,7 @@ export const TenantsList: React.FC = () => {
           />
         )}
       </Modal>
-<<<<<<< HEAD
+
 
       <ContractGenerator
         isOpen={showContractGenerator}
@@ -802,8 +791,7 @@ export const TenantsList: React.FC = () => {
           alert('Contrat de bail généré avec succès !');
         }}
       />
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
     </div>
   );
 };

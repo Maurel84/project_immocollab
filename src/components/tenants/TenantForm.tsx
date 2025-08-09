@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
+
 import { Save, User, Heart, Upload } from 'lucide-react';
-=======
+
 import { Save, User, MapPin, Phone, FileText, Heart, Camera, Upload } from 'lucide-react';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Modal } from '../ui/Modal';
 import { Card } from '../ui/Card';
 import { TenantFormData } from '../../types/tenant';
-<<<<<<< HEAD
-=======
+
+
 import { ContractGenerator } from '../contracts/ContractGenerator';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 
 interface TenantFormProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (tenant: TenantFormData) => void;
   initialData?: Partial<TenantFormData>;
-<<<<<<< HEAD
-=======
+
+
   onContractGenerated?: (contract: any) => void;
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 }
 
 export const TenantForm: React.FC<TenantFormProps> = ({
@@ -30,15 +30,15 @@ export const TenantForm: React.FC<TenantFormProps> = ({
   onClose,
   onSubmit,
   initialData,
-<<<<<<< HEAD
+
 }) => {
   const [currentStep, setCurrentStep] = useState(1);
-=======
+
   onContractGenerated,
 }) => {
   const [showContractGenerator, setShowContractGenerator] = useState(false);
   const [createdTenant, setCreatedTenant] = useState<TenantFormData | null>(null);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   const [formData, setFormData] = useState<TenantFormData>({
     firstName: '',
     lastName: '',
@@ -55,12 +55,12 @@ export const TenantForm: React.FC<TenantFormProps> = ({
     photoUrl: '',
     idCardUrl: '',
     paymentStatus: 'bon',
-<<<<<<< HEAD
+
     agencyId: '1',
     ...initialData,
   });
 
-=======
+
     agencyId: '',
     ...initialData,
   });
@@ -87,12 +87,12 @@ export const TenantForm: React.FC<TenantFormProps> = ({
     { value: 'mauvais', label: 'Mauvais payeur', color: 'text-red-600' },
   ];
 
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   const updateFormData = (updates: Partial<TenantFormData>) => {
     setFormData(prev => ({ ...prev, ...updates }));
   };
 
-<<<<<<< HEAD
+
   const validateStep = (step: number): boolean => {
     switch (step) {
       case 1:
@@ -137,7 +137,7 @@ export const TenantForm: React.FC<TenantFormProps> = ({
     if (type === 'photo') {
       updateFormData({ photoUrl: url });
     } else {
-=======
+
   const handleFileUpload = (file: File, type: 'photo' | 'idCard') => {
     const url = URL.createObjectURL(file);
     if (type === 'photo') {
@@ -145,12 +145,12 @@ export const TenantForm: React.FC<TenantFormProps> = ({
       updateFormData({ photoUrl: url });
     } else {
       setIdCardFile(file);
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
       updateFormData({ idCardUrl: url });
     }
   };
 
-<<<<<<< HEAD
+
   const steps = [
     { id: 1, title: 'Informations personnelles', icon: User },
     { id: 2, title: 'Situation familiale', icon: Heart },
@@ -455,7 +455,7 @@ export const TenantForm: React.FC<TenantFormProps> = ({
         </div>
       </form>
     </Modal>
-=======
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -921,6 +921,6 @@ export const TenantForm: React.FC<TenantFormProps> = ({
         }}
       />
     </>
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
   );
 };
