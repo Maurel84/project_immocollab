@@ -123,17 +123,23 @@ ANNEXES :
     agencyName: string;
     agencyAddress: string;
     agencyPhone: string;
+<<<<<<< HEAD
     agencyEmail: string;
     agencyCommercialRegister: string;
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     tenantName: string;
     tenantAddress: string;
     tenantPhone: string;
     tenantProfession: string;
+<<<<<<< HEAD
     tenantNationality: string;
     tenantIdNumber: string;
     ownerName: string;
     ownerAddress: string;
     ownerPhone: string;
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     propertyAddress: string;
     propertyDescription: string;
     monthlyRent: number;
@@ -144,6 +150,7 @@ ANNEXES :
     duration: number; // en mois
   }): string {
     return `
+<<<<<<< HEAD
 CONTRAT DE BAIL À USAGE PROFESSIONNEL
 (Conforme aux articles 101 à 134 du Traité OHADA relatif au Droit Commercial Général)
 (Ratifié par la République de Côte d'Ivoire le 29 septembre 1995)
@@ -305,12 +312,118 @@ RÉFÉRENCES LÉGALES :
 LE BAILLEUR                        LE PRENEUR
 ${data.ownerName}                  ${data.tenantName}
 Représenté par ${data.agencyName}
+=======
+CONTRAT DE BAIL D'HABITATION
+(Conforme à la loi ivoirienne sur les baux d'habitation)
+
+Entre les soussignés :
+
+LE BAILLEUR :
+${data.agencyName}
+Agence immobilière agréée
+Agissant pour le compte du propriétaire
+Adresse : ${data.agencyAddress}
+Téléphone : ${data.agencyPhone}
+Ci-après dénommé "LE BAILLEUR"
+
+LE LOCATAIRE :
+Monsieur/Madame ${data.tenantName}
+Profession : ${data.tenantProfession}
+Demeurant à : ${data.tenantAddress}
+Téléphone : ${data.tenantPhone}
+Ci-après dénommé(e) "LE LOCATAIRE"
+
+ARTICLE 1 - OBJET DE LA LOCATION
+Le bailleur loue au locataire le logement suivant :
+- Adresse : ${data.propertyAddress}
+- Description : ${data.propertyDescription}
+
+ARTICLE 2 - DESTINATION DES LIEUX
+Les lieux loués sont destinés exclusivement à l'habitation du locataire et de sa famille.
+Toute autre utilisation est formellement interdite sans accord écrit du bailleur.
+
+ARTICLE 3 - DURÉE DU BAIL
+Le présent bail est consenti pour une durée de ${data.duration} mois, 
+soit du ${data.startDate.toLocaleDateString('fr-FR')}${data.endDate ? ` au ${data.endDate.toLocaleDateString('fr-FR')}` : ''}.
+Il se renouvelle par tacite reconduction sauf dénonciation dans les formes légales.
+
+ARTICLE 4 - LOYER ET CHARGES
+Le loyer mensuel est fixé à ${data.monthlyRent.toLocaleString()} FCFA (${this.numberToWords(data.monthlyRent)} francs CFA).
+${data.charges ? `Les charges mensuelles s'élèvent à ${data.charges.toLocaleString()} FCFA.` : ''}
+Le loyer est payable d'avance, au plus tard le 5 de chaque mois, sans qu'il soit besoin de demande.
+
+ARTICLE 5 - DÉPÔT DE GARANTIE
+Le locataire verse une caution de ${data.deposit.toLocaleString()} FCFA, 
+soit ${Math.round(data.deposit / data.monthlyRent)} mois de loyer.
+Cette caution sera restituée en fin de bail, déduction faite des éventuelles réparations locatives.
+
+ARTICLE 6 - OBLIGATIONS DU LOCATAIRE
+Le locataire s'engage à :
+- Payer le loyer aux échéances convenues
+- Occuper paisiblement les lieux et les maintenir en bon état
+- Effectuer les réparations locatives à sa charge
+- Ne pas sous-louer sans autorisation écrite du bailleur
+- Souscrire une assurance habitation et en justifier annuellement
+- Respecter le règlement de copropriété s'il existe
+- Permettre les visites pour travaux urgents ou vente éventuelle
+
+ARTICLE 7 - OBLIGATIONS DU BAILLEUR
+Le bailleur s'engage à :
+- Délivrer le logement en bon état d'habitabilité
+- Assurer la jouissance paisible des lieux
+- Effectuer les grosses réparations nécessaires
+- Respecter le droit au maintien dans les lieux du locataire
+
+ARTICLE 8 - ÉTAT DES LIEUX
+Un état des lieux contradictoire sera établi à l'entrée et à la sortie du locataire.
+En cas de désaccord, il sera fait appel à un huissier de justice.
+
+ARTICLE 9 - TRAVAUX ET RÉPARATIONS
+Les réparations locatives (robinetterie, peinture, etc.) sont à la charge du locataire.
+Les grosses réparations (toiture, structure, etc.) restent à la charge du bailleur.
+
+ARTICLE 10 - RÉSILIATION PAR LE LOCATAIRE
+Le locataire peut résilier le bail à tout moment moyennant un préavis de trois (3) mois
+donné par lettre recommandée avec accusé de réception.
+
+ARTICLE 11 - RÉSILIATION PAR LE BAILLEUR
+Le bailleur ne peut résilier qu'aux conditions prévues par la loi :
+- Pour reprise personnelle ou familiale (préavis de 6 mois)
+- Pour vente (préavis de 6 mois avec droit de préemption du locataire)
+- Pour motif légitime et sérieux
+
+ARTICLE 12 - RÉVISION DU LOYER
+Le loyer pourra être révisé annuellement selon l'indice des prix à la consommation
+publié par l'Institut National de la Statistique (INS) de Côte d'Ivoire.
+
+ARTICLE 13 - CLAUSE RÉSOLUTOIRE
+À défaut de paiement du loyer aux échéances convenues, et un mois après commandement
+demeuré infructueux, le présent bail sera résilié de plein droit.
+
+ARTICLE 14 - CESSION ET SOUS-LOCATION
+La cession du bail et la sous-location sont interdites sans l'accord écrit du bailleur.
+
+ARTICLE 15 - ÉLECTION DE DOMICILE
+Les parties élisent domicile en leurs adresses respectives ci-dessus indiquées
+pour l'exécution du présent contrat.
+
+ARTICLE 16 - LITIGES
+Tout litige sera soumis aux tribunaux compétents d'Abidjan, Côte d'Ivoire,
+après tentative de conciliation amiable.
+
+Fait à Abidjan, le ${new Date().toLocaleDateString('fr-FR')}
+En deux exemplaires originaux
+
+LE BAILLEUR                        LE LOCATAIRE
+${data.agencyName}                 ${data.tenantName}
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 
 Signature et cachet :              Signature :
 
 
 _____________________             _____________________
 
+<<<<<<< HEAD
 ANNEXES OBLIGATOIRES (Article 124 OHADA) :
 - État des lieux d'entrée détaillé
 - Copie certifiée conforme des pièces d'identité du preneur
@@ -326,6 +439,15 @@ MENTIONS LÉGALES OBLIGATOIRES :
 - Droit de préemption du locataire en cas de vente (Article 116 OHADA)
 - Procédure de révision des loyers selon l'indice INS
 - Recours possible devant la Commission de Conciliation des Baux
+=======
+ANNEXES OBLIGATOIRES :
+- État des lieux d'entrée détaillé
+- Copie des pièces d'identité du locataire
+- Justificatifs de revenus (3 derniers bulletins de salaire)
+- Attestation d'assurance habitation
+- Règlement de copropriété (le cas échéant)
+- Diagnostic de performance énergétique (si applicable)
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 `;
   }
 

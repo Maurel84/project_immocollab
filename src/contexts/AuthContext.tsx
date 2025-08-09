@@ -30,6 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const checkSession = async () => {
       try {
+<<<<<<< HEAD
         // FORCE DEMO MODE - No database operations
         console.log('Application en mode démonstration complet');
         
@@ -44,12 +45,69 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
       } catch (error) {
         console.warn('Session check failed:', error);
+=======
+        if (!supabase) {
+          setIsLoading(false);
+          return;
+        }
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          // Check if it's an admin first
+          const { data: adminData } = await supabase
+            .from('platform_admins')
+            .select('*')
+            .eq('id', session.user.id);
+
+          if (adminData && adminData.length > 0) {
+            const adminRecord = adminData[0];
+            const adminUser: PlatformAdmin = {
+              id: adminRecord.id,
+              email: adminRecord.email,
+              firstName: adminRecord.first_name,
+              lastName: adminRecord.last_name,
+              role: adminRecord.role,
+              permissions: adminRecord.permissions,
+              createdAt: new Date(adminRecord.created_at),
+            };
+            setAdmin(adminUser);
+          } else {
+            // Check for regular user
+            const { data: userData } = await supabase
+              .from('users')
+              .select('*')
+              .eq('id', session.user.id);
+
+            if (userData && userData.length > 0) {
+              const userRecord = userData[0];
+              const userProfile: User = {
+                id: userRecord.id,
+                email: userRecord.email,
+                firstName: userRecord.first_name,
+                lastName: userRecord.last_name,
+                role: userRecord.role,
+                agencyId: userRecord.agency_id,
+                avatar: userRecord.avatar,
+                createdAt: new Date(userRecord.created_at),
+              };
+              setUser(userProfile);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error checking session:', error);
+        // If it's a network error, don't throw - just continue with demo mode
+        if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+          console.warn('Supabase connection failed, continuing in demo mode');
+        }
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       } finally {
         setIsLoading(false);
       }
     };
 
     checkSession();
+<<<<<<< HEAD
   }, []);
 
   // Comptes de démonstration pour les agences
@@ -159,6 +217,67 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       } else {
         throw new Error('Email ou mot de passe incorrect');
       }
+=======
+
+    if (supabase) {
+      try {
+        const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
+          if (event === 'SIGNED_OUT' || !session) {
+            setUser(null);
+            setAdmin(null);
+          }
+        });
+
+        return () => {
+          data?.subscription?.unsubscribe();
+        };
+      } catch (error) {
+        console.warn('Auth state change listener failed:', error);
+      }
+    }
+  }, []);
+
+  const login = async (email: string, password: string) => {
+    if (!supabase) {
+      throw new Error('Supabase non configuré. Veuillez configurer les variables d\'environnement.');
+    }
+
+    setIsLoading(true);
+    try {
+      // Demo accounts for testing
+
+      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (authError) {
+        throw new Error('Email ou mot de passe incorrect');
+      }
+
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', authData.user.id);
+
+      if (userError || !userData || userData.length === 0) {
+        throw new Error('Utilisateur non trouvé dans la base de données');
+      }
+
+      const userRecord = userData[0];
+      const userProfile: User = {
+        id: userRecord.id,
+        email: userRecord.email,
+        firstName: userRecord.first_name,
+        lastName: userRecord.last_name,
+        role: userRecord.role,
+        agencyId: userRecord.agency_id,
+        avatar: userRecord.avatar,
+        createdAt: new Date(userRecord.created_at),
+      };
+      
+      setUser(userProfile);
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     } catch (error) {
       throw error;
     } finally {
@@ -167,6 +286,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const loginAdmin = async (email: string, password: string) => {
+<<<<<<< HEAD
     // Comptes admin de démonstration - fonctionnement sans Supabase
     const demoAdminAccounts = [
       {
@@ -213,6 +333,44 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setAdmin(adminUser);
       localStorage.setItem('admin', JSON.stringify(adminUser));
+=======
+    if (!supabase) {
+      throw new Error('Supabase non configuré. Veuillez configurer les variables d\'environnement.');
+    }
+
+    setIsLoading(true);
+    try {
+      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (authError) {
+        throw new Error('Email ou mot de passe administrateur incorrect');
+      }
+
+      const { data: adminData, error: adminError } = await supabase
+        .from('platform_admins')
+        .select('*')
+        .eq('id', authData.user.id);
+
+      if (adminError || !adminData || adminData.length === 0) {
+        throw new Error('Compte administrateur non trouvé');
+      }
+
+      const adminRecord = adminData[0];
+      const adminUser: PlatformAdmin = {
+        id: adminRecord.id,
+        email: adminRecord.email,
+        firstName: adminRecord.first_name,
+        lastName: adminRecord.last_name,
+        role: adminRecord.role,
+        permissions: adminRecord.permissions,
+        createdAt: new Date(adminRecord.created_at),
+      };
+      
+      setAdmin(adminUser);
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     } catch (error) {
       throw error;
     } finally {
@@ -221,6 +379,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = () => {
+<<<<<<< HEAD
     setUser(null);
     setAdmin(null);
     localStorage.removeItem('user');
@@ -230,6 +389,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (supabase) {
       supabase.auth.signOut().catch(console.warn);
     }
+=======
+    if (supabase) {
+      supabase.auth.signOut();
+    }
+    setUser(null);
+    setAdmin(null);
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   };
 
   const value = {

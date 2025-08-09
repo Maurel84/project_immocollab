@@ -127,6 +127,7 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({
     updateFormData({ images });
   };
 
+<<<<<<< HEAD
   const validateCurrentStep = () => {
     switch (currentStep) {
       case 1:
@@ -146,12 +147,19 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({
     return validateCurrentStep() && currentStep === 4;
   };
 
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Vérifier que nous sommes à la dernière étape
+<<<<<<< HEAD
     if (currentStep !== 4) {
       alert('Veuillez compléter toutes les étapes avant d\'enregistrer.');
+=======
+    if (currentStep < 4) {
+      alert('Veuillez compléter toutes les étapes avant de soumettre');
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       return;
     }
     
@@ -541,16 +549,23 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({
             {currentStep < 4 ? (
               <Button
                 type="button"
+<<<<<<< HEAD
                 disabled={!validateCurrentStep()}
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
                 onClick={() => setCurrentStep(currentStep + 1)}
               >
                 Suivant
               </Button>
             ) : (
+<<<<<<< HEAD
               <Button 
                 type="submit"
                 disabled={!validateAllSteps()}
               >
+=======
+              <Button type="submit">
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
                 <Save className="h-4 w-4 mr-2" />
                 Enregistrer
               </Button>

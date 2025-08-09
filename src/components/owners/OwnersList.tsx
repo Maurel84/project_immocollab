@@ -5,25 +5,38 @@ import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
 import { OwnerForm } from './OwnerForm';
 import { Owner, OwnerFormData } from '../../types/owner';
+<<<<<<< HEAD
 import { useSupabaseData, useSupabaseCreate, useSupabaseUpdate, useSupabaseDelete } from '../../hooks/useSupabaseData';
+=======
+import { useSupabaseData, useSupabaseCreate, useSupabaseDelete } from '../../hooks/useSupabaseData';
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 import { dbService } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ContractGenerator } from '../contracts/ContractGenerator';
 import { Modal } from '../ui/Modal';
+<<<<<<< HEAD
 import { ActivityLogger } from '../../utils/activityLogger';
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 
 export const OwnersList: React.FC = () => {
   const { user } = useAuth();
   const [showForm, setShowForm] = useState(false);
+<<<<<<< HEAD
   const [showOwnerDetails, setShowOwnerDetails] = useState(false);
   const [editingOwner, setEditingOwner] = useState<Owner | null>(null);
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const [showContractGenerator, setShowContractGenerator] = useState(false);
   const [selectedOwner, setSelectedOwner] = useState<Owner | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPropertyTitle, setFilterPropertyTitle] = useState('all');
   const [filterMaritalStatus, setFilterMaritalStatus] = useState('all');
+<<<<<<< HEAD
   const [showContractDetails, setShowContractDetails] = useState(false);
   const [ownerContract, setOwnerContract] = useState<string>('');
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 
   // Supabase data hooks
   const { data: owners, loading, error, refetch, setData } = useSupabaseData<Owner>(
@@ -38,6 +51,7 @@ export const OwnersList: React.FC = () => {
       // Trigger dashboard refresh
       window.dispatchEvent(new Event('storage'));
       
+<<<<<<< HEAD
       // Log the creation
       if (user) {
         ActivityLogger.log(
@@ -52,6 +66,8 @@ export const OwnersList: React.FC = () => {
         );
       }
       
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       // Proposer la génération d'un contrat de gestion
       if (confirm('Propriétaire créé avec succès ! Voulez-vous générer un contrat de gestion ?')) {
         setSelectedOwner(newOwner);
@@ -60,6 +76,7 @@ export const OwnersList: React.FC = () => {
     }
   );
 
+<<<<<<< HEAD
   const { update: updateOwner, loading: updating } = useSupabaseUpdate(
     dbService.updateOwner,
     (updatedOwner) => {
@@ -91,12 +108,18 @@ export const OwnersList: React.FC = () => {
       refetch();
       // Log will be added in handleDeleteOwner
     }
+=======
+  const { deleteItem: deleteOwner, loading: deleting } = useSupabaseDelete(
+    dbService.deleteOwner,
+    () => refetch()
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   );
 
   const handleAddOwner = async (ownerData: OwnerFormData) => {
     if (!user?.agencyId) return;
     
     try {
+<<<<<<< HEAD
       if (editingOwner) {
         // Mode modification
         await updateOwner(editingOwner.id, {
@@ -133,12 +156,32 @@ export const OwnersList: React.FC = () => {
         });
         alert('Propriétaire créé avec succès !');
       }
+=======
+      await createOwner({
+        agency_id: user.agencyId,
+        first_name: ownerData.firstName,
+        last_name: ownerData.lastName,
+        phone: ownerData.phone,
+        email: ownerData.email || null,
+        address: ownerData.address,
+        city: ownerData.city,
+        property_title: ownerData.propertyTitle,
+        property_title_details: ownerData.propertyTitleDetails || null,
+        marital_status: ownerData.maritalStatus,
+        spouse_name: ownerData.spouseName || null,
+        spouse_phone: ownerData.spousePhone || null,
+        children_count: ownerData.childrenCount,
+      });
+      
+      alert('Propriétaire créé avec succès !');
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     } catch (error) {
       console.error('Error creating owner:', error);
     }
   };
 
   const handleDeleteOwner = async (ownerId: string) => {
+<<<<<<< HEAD
     const ownerToDelete = owners.find(o => o.id === ownerId);
     if (confirm('Êtes-vous sûr de vouloir supprimer ce propriétaire ?')) {
       try {
@@ -155,6 +198,10 @@ export const OwnersList: React.FC = () => {
             'Propriétaire supprimé définitivement'
           );
         }
+=======
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce propriétaire ?')) {
+      try {
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
         await deleteOwner(ownerId);
       } catch (error) {
         console.error('Error deleting owner:', error);
@@ -162,6 +209,7 @@ export const OwnersList: React.FC = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleViewOwner = (owner: Owner) => {
     setSelectedOwner(owner);
     setShowOwnerDetails(true);
@@ -219,6 +267,8 @@ export const OwnersList: React.FC = () => {
     }
   };
 
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const getPropertyTitleLabel = (title: string) => {
     const labels = {
       attestation_villageoise: 'Attestation villageoise',
@@ -383,6 +433,7 @@ export const OwnersList: React.FC = () => {
                 </div>
                 
                 <div className="flex space-x-1">
+<<<<<<< HEAD
                   <Button 
                     variant="ghost" 
                     size="sm"
@@ -423,6 +474,34 @@ export const OwnersList: React.FC = () => {
                       </Button>
                     </>
                   )}
+=======
+                  <Button variant="ghost" size="sm">
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="sm">
+                    <Edit className="h-4 w-4" />
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    onClick={() => {
+                      setSelectedOwner(owner);
+                      setShowContractGenerator(true);
+                    }}
+                    title="Générer contrat de gestion"
+                  >
+                    <FileText className="h-4 w-4" />
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-red-600 hover:text-red-700"
+                    onClick={() => handleDeleteOwner(owner.id)}
+                    disabled={deleting}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
                 </div>
               </div>
 
@@ -503,6 +582,7 @@ export const OwnersList: React.FC = () => {
 
       <OwnerForm
         isOpen={showForm}
+<<<<<<< HEAD
         onClose={() => {
           setShowForm(false);
           setEditingOwner(null);
@@ -599,6 +679,12 @@ export const OwnersList: React.FC = () => {
         )}
       </Modal>
 
+=======
+        onClose={() => setShowForm(false)}
+        onSubmit={handleAddOwner}
+      />
+
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       <ContractGenerator
         isOpen={showContractGenerator}
         onClose={() => {

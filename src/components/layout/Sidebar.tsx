@@ -12,8 +12,12 @@ import {
   BarChart3,
   Bell,
   Shield,
+<<<<<<< HEAD
   Sofa,
   Activity
+=======
+  Sofa
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { cn } from '../../utils/cn';
@@ -28,7 +32,10 @@ const getNavigation = (userRole: string) => [
   { name: 'Résidences meublées', href: '/furnished', icon: Sofa },
   { name: 'Collaboration', href: '/collaboration', icon: MessageSquare },
   ...(userRole !== 'agent' ? [{ name: 'Rapports', href: '/reports', icon: BarChart3 }] : []),
+<<<<<<< HEAD
   ...(userRole === 'director' ? [{ name: 'Journal d\'activité', href: '/logs', icon: Activity }] : []),
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   { name: 'Notifications', href: '/notifications', icon: Bell },
   { name: 'Paramètres', href: '/settings', icon: Settings },
 ];
@@ -122,6 +129,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                   : 'text-gray-300 hover:bg-gray-700 hover:text-white'
               )
             }
+<<<<<<< HEAD
             onClick={(e) => {
               // Force navigation even if there are loading states
               e.preventDefault();
@@ -132,6 +140,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
               e.preventDefault();
               window.location.href = item.href;
             }}
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
           >
             <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />
             {!isCollapsed && item.name}

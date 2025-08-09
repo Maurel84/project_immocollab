@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 import { Plus, Search, FileText, Calendar, DollarSign, Eye, Edit, Trash2, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
@@ -21,6 +25,7 @@ export const ContractsList: React.FC = () => {
     dbService.getContracts
   );
 
+<<<<<<< HEAD
   // Écouter les changements de localStorage pour les contrats générés
   useEffect(() => {
     const handleStorageChange = () => {
@@ -31,6 +36,8 @@ export const ContractsList: React.FC = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [refetch]);
 
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const { create: createContract, loading: creating } = useSupabaseCreate(
     dbService.createContract,
     (newContract) => {

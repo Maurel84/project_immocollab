@@ -34,11 +34,21 @@ const checkSupabaseConfig = () => {
 // Safe database operation wrapper with comprehensive error handling
 const safeDbOperation = async (operation: () => Promise<any>, fallbackData: any = null) => {
   try {
+<<<<<<< HEAD
     // FORCE DEMO MODE - Never attempt any Supabase operations
     console.log('Demo mode: Using fallback data');
     return fallbackData;
   } catch (error: any) {
     console.warn('Operation failed, using fallback:', error.message || error);
+=======
+    const client = checkSupabaseConfig();
+    if (!client) {
+      return fallbackData;
+    }
+    return await operation();
+  } catch (error: any) {
+    // Gestion silencieuse des erreurs de réseau
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     return fallbackData;
   }
 };
@@ -553,12 +563,17 @@ export const dbService = {
       const client = checkSupabaseConfig();
       if (!client) {
         // Mode démonstration - simuler la création
+<<<<<<< HEAD
         const newContract = {
+=======
+        return {
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
           id: `demo_contract_${Date.now()}`,
           ...contract,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         };
+<<<<<<< HEAD
         
         // Stocker en localStorage pour persistance
         const existingContracts = JSON.parse(localStorage.getItem('demo_contracts') || '[]');
@@ -566,6 +581,8 @@ export const dbService = {
         localStorage.setItem('demo_contracts', JSON.stringify(existingContracts));
         
         return newContract;
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       }
       
       const { data, error } = await client
@@ -582,11 +599,16 @@ export const dbService = {
     return safeDbOperation(async () => {
       const client = checkSupabaseConfig();
       if (!client) {
+<<<<<<< HEAD
         // Mode démonstration - retourner les contrats stockés + contrats générés
         const storedContracts = JSON.parse(localStorage.getItem('demo_contracts') || '[]');
         const generatedContracts = JSON.parse(localStorage.getItem('generated_contracts') || '[]');
         const allContracts = [...storedContracts, ...generatedContracts];
         return allContracts.filter((contract: any) => contract.agency_id === agencyId);
+=======
+        // Mode démonstration - retourner des données d'exemple
+        return generateMockContracts(agencyId);
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
       }
       
       const { data, error } = await client
@@ -770,6 +792,7 @@ export const dbService = {
       if (error) throw error;
       return data;
     });
+<<<<<<< HEAD
   },
 
   // Receipts
@@ -794,5 +817,7 @@ export const dbService = {
       if (error) throw error;
       return data || [];
     }, []);
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   }
 };

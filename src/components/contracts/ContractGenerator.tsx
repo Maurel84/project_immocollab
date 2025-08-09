@@ -5,8 +5,11 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Card } from '../ui/Card';
 import { ContractTemplates } from './ContractTemplates';
+<<<<<<< HEAD
 import { ActivityLogger } from '../../utils/activityLogger';
 import { useAuth } from '../../contexts/AuthContext';
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 
 interface ContractGeneratorProps {
   isOpen: boolean;
@@ -15,7 +18,10 @@ interface ContractGeneratorProps {
   ownerData?: any;
   tenantData?: any;
   propertyData?: any;
+<<<<<<< HEAD
   availableProperties?: any[];
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   onContractGenerated?: (contract: string) => void;
 }
 
@@ -26,10 +32,15 @@ export const ContractGenerator: React.FC<ContractGeneratorProps> = ({
   ownerData,
   tenantData,
   propertyData,
+<<<<<<< HEAD
   availableProperties = [],
   onContractGenerated
 }) => {
   const { user } = useAuth();
+=======
+  onContractGenerated
+}) => {
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
   const [contractData, setContractData] = useState({
     // Données agence
     agencyName: 'IMMOBILIER EXCELLENCE',
@@ -90,17 +101,23 @@ export const ContractGenerator: React.FC<ContractGeneratorProps> = ({
         agencyName: contractData.agencyName,
         agencyAddress: contractData.agencyAddress,
         agencyPhone: contractData.agencyPhone,
+<<<<<<< HEAD
         agencyEmail: contractData.agencyEmail,
         agencyCommercialRegister: 'CI-ABJ-2024-B-12345',
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
         tenantName: contractData.tenantName,
         tenantAddress: contractData.tenantAddress,
         tenantPhone: contractData.tenantPhone,
         tenantProfession: contractData.tenantProfession,
+<<<<<<< HEAD
         tenantNationality: tenantData?.nationality || 'Ivoirienne',
         tenantIdNumber: tenantData?.idNumber || 'CNI-XXXXXXXXX',
         ownerName: ownerData ? `${ownerData.firstName} ${ownerData.lastName}` : contractData.ownerName,
         ownerAddress: ownerData ? `${ownerData.address}, ${ownerData.city}` : contractData.ownerAddress,
         ownerPhone: ownerData?.phone || contractData.ownerPhone,
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
         propertyAddress: contractData.propertyAddress,
         propertyDescription: contractData.propertyDescription,
         monthlyRent: contractData.monthlyRent,
@@ -128,6 +145,7 @@ export const ContractGenerator: React.FC<ContractGeneratorProps> = ({
     URL.revokeObjectURL(url);
   };
 
+<<<<<<< HEAD
   const saveContract = async () => {
     // Sauvegarder le contrat dans la base de données
     const contractRecord = {
@@ -179,6 +197,12 @@ export const ContractGenerator: React.FC<ContractGeneratorProps> = ({
     // Déclencher le rafraîchissement du dashboard et de la liste des contrats
     window.dispatchEvent(new Event('storage'));
     
+=======
+  const saveContract = () => {
+    if (onContractGenerated) {
+      onContractGenerated(generatedContract);
+    }
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
     onClose();
   };
 
@@ -313,6 +337,7 @@ export const ContractGenerator: React.FC<ContractGeneratorProps> = ({
                   onChange={(e) => setContractData(prev => ({ ...prev, propertyAddress: e.target.value }))}
                   required
                 />
+<<<<<<< HEAD
                 {type === 'bail' && availableProperties.length > 0 && (
                   <div className="mt-2">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -340,6 +365,8 @@ export const ContractGenerator: React.FC<ContractGeneratorProps> = ({
                     </select>
                   </div>
                 )}
+=======
+>>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
                 <Input
                   label="Description"
                   value={contractData.propertyDescription}
