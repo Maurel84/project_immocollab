@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 import React, { useState, useEffect } from 'react';
-=======
+
 import React from 'react';
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { LoginForm } from './components/auth/LoginForm';
@@ -20,10 +20,9 @@ import { SettingsHub } from './components/settings/SettingsHub';
 import { ReceiptsList } from './components/receipts/ReceiptsList';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { FurnishedResidences } from './components/furnished/FurnishedResidences';
-<<<<<<< HEAD
+
 import { ActivityLogs } from './components/logs/ActivityLogs';
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
+
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
@@ -63,7 +62,7 @@ const AdminProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children
 
 const AppContent: React.FC = () => {
   const { user, admin } = useAuth();
-<<<<<<< HEAD
+
   const [isNavigating, setIsNavigating] = useState(false);
 
   // Prevent navigation freezing
@@ -83,8 +82,6 @@ const AppContent: React.FC = () => {
       </div>
     );
   }
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
 
   return (
     <Router>
@@ -208,7 +205,7 @@ const AppContent: React.FC = () => {
           }
         />
         <Route
-<<<<<<< HEAD
+
           path="/logs"
           element={
             <ProtectedRoute>
@@ -219,8 +216,6 @@ const AppContent: React.FC = () => {
           }
         />
         <Route
-=======
->>>>>>> ab8e70ae88ac9b3ae8508fb999ffe72333408766
           path="/admin"
           element={
             <AdminProtectedRoute>
